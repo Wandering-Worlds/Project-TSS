@@ -17,6 +17,8 @@ public abstract class PlayerController : CharController
     protected IWeapon weapon;
     protected float moveSpeed;
 
+    public float CurrentHealth { get { return currentHealth; } }
+
     private bool charIsFacingRight = true;
 
     abstract protected void AnimateMove(float horizontalInput, float verticalInput);
@@ -27,6 +29,7 @@ public abstract class PlayerController : CharController
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         moveSpeed = classData.moveSpeed;
+        currentHealth = classData.maxHealth;
     }
 
     protected virtual void Start()

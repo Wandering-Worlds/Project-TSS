@@ -17,4 +17,5 @@ MonoBehaviour:
   projectileSpeed: 25
   projectileTimeToLive: 5
   offsetScale: 0.4
+  maxHealth: 100
   attacksPerSecond: 2
