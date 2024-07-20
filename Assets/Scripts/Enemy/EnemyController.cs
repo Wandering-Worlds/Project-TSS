@@ -18,13 +18,24 @@ public abstract class EnemyController : CharController, IDamageable
 
     protected virtual void Awake()
     {
-        refToPlayer = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        refToPlayer = GameObject.FindWithTag("Player");
 
+        // If the player is dead when the enemy is spawned, then disable this enemy unit
+        if (refToPlayer == null)
+        {
+            gameObject.SetActive(false);
+        }
     }
     protected override void Move()
     {
-        if (canMove && refToPlayer != null)
+        if (!refToPlayer.activeInHierarchy)
+        {
+            canMove = false;
+            rb.velocity = Vector2.zero;
+        }
+
+        if (canMove)
         {
             Vector2 direction = refToPlayer.transform.position - transform.position;
             rb.velocity = direction.normalized * enemyMoveSpeed;
