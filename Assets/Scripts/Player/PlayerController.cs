@@ -68,6 +68,11 @@ public abstract class PlayerController : CharController
         }
     }
 
+    protected override void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void FlipCharacterAccordingToMousePosition(Vector2 mousePosition)
     {
         float mousePosBasedOnCharPos = mousePosition.x - transform.position.x;

@@ -24,7 +24,7 @@ public abstract class EnemyController : CharController, IDamageable
     }
     protected override void Move()
     {
-        if (canMove)
+        if (canMove && refToPlayer != null)
         {
             Vector2 direction = refToPlayer.transform.position - transform.position;
             rb.velocity = direction.normalized * enemyMoveSpeed;
