@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private float spawnInterval = 3f;
+
     [SerializeField] protected GameObject[] spawnerList;
     [SerializeField] protected GameObject[] enemyType;
-    [SerializeField] private float spawnInterval = 3f;
 
     private int randomSpawnIndex;
     private GameObject refToPlayer;

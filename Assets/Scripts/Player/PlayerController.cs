@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class PlayerController : CharController
 {
     [SerializeField] private const float OFFSET_SCALE = 1f;
+    [SerializeField] private GameObject deathMessage;
 
     [SerializeField] protected CharacterDataScriptableObject classData;
     [SerializeField] protected GameObject weaponPrefab;
@@ -70,6 +71,11 @@ public abstract class PlayerController : CharController
 
     protected override void Die()
     {
+        if (deathMessage != null)
+        {
+            deathMessage.SetActive(true);
+        }
+
         gameObject.SetActive(false);
     }
 
