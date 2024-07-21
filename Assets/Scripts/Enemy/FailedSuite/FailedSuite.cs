@@ -13,6 +13,8 @@ public class FailedSuite : EnemyController
         base.Awake();
         currentHealth = classData.health;
         enemyMoveSpeed = classData.speed;
+        damageAmount = classData.damage;
+        attackCooldown = classData.attackCooldown;
     }
 
 

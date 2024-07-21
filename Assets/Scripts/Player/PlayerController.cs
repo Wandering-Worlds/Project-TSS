@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class PlayerController : CharController
 {
     [SerializeField] private const float OFFSET_SCALE = 1f;
+    [SerializeField] private GameObject deathMessage;
 
     [SerializeField] protected CharacterDataScriptableObject classData;
     [SerializeField] protected GameObject weaponPrefab;
@@ -16,6 +17,8 @@ public abstract class PlayerController : CharController
     protected Animator animator;
     protected IWeapon weapon;
     protected float moveSpeed;
+
+    public float CurrentHealth { get { return currentHealth; } }
 
     private bool charIsFacingRight = true;
 
@@ -27,6 +30,7 @@ public abstract class PlayerController : CharController
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         moveSpeed = classData.moveSpeed;
+        currentHealth = classData.maxHealth;
     }
 
     protected virtual void Start()
@@ -63,6 +67,16 @@ public abstract class PlayerController : CharController
         {
             weapon.Fire(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
+    }
+
+    protected override void Die()
+    {
+        if (deathMessage != null)
+        {
+            deathMessage.SetActive(true);
+        }
+
+        gameObject.SetActive(false);
     }
 
     private void FlipCharacterAccordingToMousePosition(Vector2 mousePosition)

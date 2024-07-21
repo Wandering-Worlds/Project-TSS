@@ -11,8 +11,10 @@ public class CharacterDataScriptableObject : ScriptableObject
     public float projectileSpeed;
     public float projectileTimeToLive;
     public float offsetScale;
+    public float maxHealth;
 
     [SerializeField] private float attacksPerSecond;
+
 
     public float attackCooldown { get; private set; }
 
