@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour, ICollectible
     private GameObject refToPlayer;
 
     private bool isPulled = false;
-    private float speed = 5f;
+    private float speed = 8f;
 
     private void Start()
     {
