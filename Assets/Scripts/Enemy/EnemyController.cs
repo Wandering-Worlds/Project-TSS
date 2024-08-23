@@ -51,8 +51,7 @@ public abstract class EnemyController : CharController, IDamageable
     protected override void Die()
     {
         base.Die();
-        // instantiate coin
-        
+        GameObject.FindWithTag("GM").GetComponent<GM>().DropLoot(transform.position);        
         
     }
 
