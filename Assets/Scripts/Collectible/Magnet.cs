@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Magnet : MonoBehaviour
+{
+    private GameObject refToPlayer;
+    private void Start()
+    {
+        refToPlayer = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void FixedUpdate()
+    {
+        transform.position = refToPlayer.transform.position;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ICollectible collectible = collision.GetComponent<ICollectible>();
+        if (collectible != null)
+        {
+            collectible.setMove();
+        }
+    }
+}

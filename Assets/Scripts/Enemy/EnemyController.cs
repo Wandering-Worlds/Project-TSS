@@ -48,6 +48,14 @@ public abstract class EnemyController : CharController, IDamageable
         StartCoroutine(FlashEffect());
     }
 
+    protected override void Die()
+    {
+        base.Die();
+        // instantiate coin
+        
+        
+    }
+
     // enumartor for a flash effect when the enemy takes damage
     protected IEnumerator FlashEffect()
     {
